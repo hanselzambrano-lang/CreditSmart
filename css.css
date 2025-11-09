@@ -1,0 +1,26 @@
+/* Estilos Generales */
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Roboto",Arial, sans-serif;
+    background-color: rgb(231, 252, 200);
+    color: rgb(19, 14, 6);
+    line-height:1.6;
+}
+.container{
+   max-width:1200px ;
+   margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navegacion */
+.navbar{
+    background-color: aquamarine;
+    padding: 1rem 0;
+    box-shadow: 2 2px;
+    margin-bottom: 2rem;
+}
