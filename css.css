@@ -7,7 +7,7 @@
 
 body{
     font-family: "Roboto",Arial, sans-serif;
-    background-color: rgb(231, 252, 200);
+    background-color: rgb(255, 255, 255);
     color: rgb(19, 14, 6);
     line-height:1.6;
 }
@@ -19,8 +19,49 @@ body{
 
 /* Navegacion */
 .navbar{
-    background-color: aquamarine;
+    background-color: rgba(8, 98, 26, 0.966);
     padding: 1rem 0;
     box-shadow: 2 2px;
     margin-bottom: 2rem;
+}
+
+.logo{
+    text-decoration: none;
+    color:rgb(253, 253, 253);
+    font-size: 1.5rem;
+}
+.menu{
+    display: flex;
+    list-style: none;
+    gap:2rem; 
+
+}
+
+.menu a{
+    text-decoration: none;
+    color:white;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+.menu a:hover,
+.menu a.active{
+    color: rgb(156, 225, 53);
+}
+
+/* Banner Principal - Banner */
+.banner{
+    background:linear-gradient(135deg,#99dc65 0%, #dbf22b 100%);
+    color: rgb(23, 23, 23);
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.banner h2{
+    font-size: 2.5rem;
+    margin-bottom:0.5rem;
+}
+
+.banner p{
+    font-size: 1.2rem;
+    margin-bottom:0.95rem;
 }
