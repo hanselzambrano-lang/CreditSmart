@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+  <title>Solicitar Crédito - CreditSmart</title>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html"><h1 class="logo">CrediSmart</h1></a>
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="simulador.html">Simulador</a></li>
+        <li><a href="solicitar.html" class="active">Solicitar crédito</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="banner">
+    <div class="container">
+      <h2>Solicitud de Crédito</h2>
+      <p>Completa el formulario para solicitar tu crédito. (Diseño solo — no envía datos)</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="form-section">
+      <form class="credit-form" action="#" onsubmit="return false">
+        <fieldset>
+          <legend>Datos personales</legend>
+          <label>Nombre completo<input type="text" name="nombre" required></label>
+          <label>Cédula<input type="number" name="cedula" required></label>
+          <label>Email<input type="email" name="email" required></label>
+          <label>Teléfono<input type="tel" name="telefono"></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Datos del crédito</legend>
+          <label>Tipo de crédito
+            <select name="tipo">
+              <option>Crédito Libre Inversión</option>
+              <option>Crédito Vehículo</option>
+              <option>Crédito Vivienda</option>
+              <option>Crédito Educativo</option>
+              <option>Crédito Empresarial</option>
+            </select>
+          </label>
+          <label>Monto solicitado<input type="number" name="monto"></label>
+          <label>Plazo (meses)
+            <select name="plazo">
+              <option>12</option>
+              <option>24</option>
+              <option>36</option>
+              <option>48</option>
+              <option>60</option>
+            </select>
+          </label>
+          <label>Destino del crédito<textarea name="destino"></textarea></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Datos laborales</legend>
+          <label>Empresa donde trabaja<input type="text" name="empresa"></label>
+          <label>Cargo<input type="text" name="cargo"></label>
+          <label>Ingresos mensuales<input type="number" name="ingresos"></label>
+        </fieldset>
+
+        <div class="form-actions">
+          <button class="btn primary" type="submit">Enviar Solicitud</button>
+          <button class="btn" type="reset">Limpiar Formulario</button>
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
