@@ -28,10 +28,26 @@ body{
 .navbar .container{display:flex;align-items:center;justify-content:space-between;gap:1rem}
 
 .logo{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     text-decoration: none;
     color:rgb(253, 253, 253);
     font-size: 1.5rem;
 }
+
+.logo-img{
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.logo h1{
+    margin: 0;
+    font-size: 1.5rem;
+    color:rgb(253, 253, 253);
+}
+
 .menu{
     display: flex;
     list-style: none;
@@ -108,6 +124,59 @@ body{
     color: #0b7a4a;
 }
 
+.icon{
+    font-size:1.4rem;
+}
+
+.detalles{
+    margin: 0.6rem 0 0.8rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.detalle-item{
+    display:flex;
+    justify-content:space-between;
+    gap:0.5rem;
+    font-size:0.95rem;
+    color:#333;
+}
+
+.label{
+    color:#555;
+}
+
+.value{
+    font-weight:600;
+    color:#111;
+}
+
+/* Simulador - controles de búsqueda */
+.simulator-controls{
+    margin: 1.5rem 0;
+}
+
+.search-form{
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.search-form input[type="search"],
+.search-form select{
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    flex: 1;
+    min-width: 180px;
+}
+
+.search-form .btn{
+    padding: 0.5rem 1rem;
+}
+
 
 .credit-form{
     display: flex;
@@ -173,5 +242,6 @@ body{
   .banner{padding:2rem 0}
     .credits-grid{grid-template-columns:1fr}
     .btn{padding:0.6rem 0.9rem;font-size:1rem}
-    .logo{font-size:1.25rem}
+    .logo h1{font-size:1.25rem}
+    .logo-img{width:32px;height:32px}
 }
