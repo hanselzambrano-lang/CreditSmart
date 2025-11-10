@@ -143,6 +143,21 @@ body{
     color:#333;
 }
 
+.detalle-item.requisitos{
+    flex-direction: column;
+    gap: 0.25rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid #f0f0f0;
+    margin-top: 0.3rem;
+}
+
+.detalle-item.requisitos .value{
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #666;
+    line-height: 1.4;
+}
+
 .label{
     color:#555;
 }
@@ -150,6 +165,16 @@ body{
 .value{
     font-weight:600;
     color:#111;
+}
+
+/* Estilos para requisitos en simulador (versión compacta) */
+.requisitos-mini{
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid #f0f0f0;
+    line-height: 1.4;
 }
 
 /* Simulador - controles de búsqueda */
