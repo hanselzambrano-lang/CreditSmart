@@ -92,6 +92,8 @@ export default function RequestForm({ credits = [], onSubmit }){
     setTimeout(()=>setSuccess(''),3000)
   }
 
+  const fmt = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 })
+
   return (
     <form className="credit-form" onSubmit={handleSubmit} noValidate>
       <fieldset>
@@ -140,14 +142,14 @@ export default function RequestForm({ credits = [], onSubmit }){
         <label>Cargo<input name="position" value={values.position} onChange={handleChange} /></label>
         <label>Ingresos mensuales<input name="income" type="number" value={values.income} onChange={handleChange} /></label>
         {errors.income && <div className="field-error">{errors.income}</div>}
-      </fieldset>
+        </fieldset>
 
-      <div className="form-summary">
-        <h4>Resumen</h4>
-        <p>Producto: <strong>{credits.find(c=>c.id===values.product)?.name || '-'}</strong></p>
-        <p>Monto: <strong>{values.amount || '-'}</strong> | Plazo: <strong>{values.term} meses</strong></p>
-        <p>Cuota estimada mensual: <strong>{monthly>0 ? monthly.toFixed(0) : '-'}</strong></p>
-      </div>
+        <div className="form-summary">
+            <h4>Resumen</h4>
+            <p>Producto: <strong>{credits.find(c=>c.id===values.product)?.name || '-'}</strong></p>
+            <p>Monto: <strong>{values.amount ? fmt.format(Number(String(values.amount).replace(/[^0-9.]/g,''))) : '-'}</strong> | Plazo: <strong>{values.term} meses</strong></p>
+            <p>Cuota estimada mensual: <strong>{monthly>0 ? fmt.format(monthly) : '-'}</strong></p>
+          </div>
 
       <div className="form-actions">
         <button className="btn primary" type="submit">Enviar Solicitud</button>
