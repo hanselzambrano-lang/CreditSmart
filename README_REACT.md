@@ -1,4 +1,4 @@
-# CreditSmart — S20 EA1: Guía para la versión React
+# CreditSmart — S20 EA1: Manual para la versión React
 Estudiante: Hansel Raul Zambrano Lizarazo
 
 Este documento contiene las instrucciones rápidas para ejecutar la aplicación React (Vite) incluida en `react-app/`, y la guía para hacer commits y push desde PowerShell.

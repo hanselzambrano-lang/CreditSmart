@@ -1,41 +1,59 @@
 
 
 # CreditSmart — S20 EA1: Diseño de Interfaces Web
-Estudiante : Hansel Raul Zambrano Lizarazo
+Estudiante: Hansel Raul Zambrano Lizarazo
 
 ## Descripción
 
-Sistema web estático para consultar productos crediticios, simular préstamos y solicitar créditos. Desarrollado con HTML5 y CSS3 responsive.
+Aplicación para consultar productos crediticios, simular préstamos y solicitar créditos. Contiene una versión estática y una aplicación dinámica desarrollada con React (Vite) que implementa catálogo, simulador y formulario de solicitud.
 
-## Estructura de Archivos
+## Tecnologías
+
+- React 18 (Vite)
+- React Router (`react-router-dom`)
+- JavaScript (ES6+), HTML5, CSS3
+
+## Estructura relevante
 
 ```
 CrediSmart/
-│
-├── index.html          # Página principal - Catálogo de créditos
-├── simulador.html      # Simulador con filtros de búsqueda
-├── solicitar.html      # Formulario de solicitud
-├── styles.css          # Estilos consolidados y responsive
-├── IMG/
-│   └── tarjeta-de-visita.png
+├── index.html                    # Versión estática (catálogo)
+├── simulador.html                # Versión estática (simulador)
+├── solicitar.html                # Versión estática (formulario)
+├── react-app/                    # Aplicación React (Vite)
+│   ├── package.json
+│   └── src/
+│       ├── components/
+│       ├── pages/
+│       └── data/
+├── css.css                       # estilos (sitio estático)
+├── IMG/                          # imágenes y recursos
 └── README.md
 ```
 
-## Cómo Ejecutar
+## Instalación y ejecución (local, PowerShell)
 
-1. Abrir index.html con doble clic o desde un navegador
-2. Navegar entre las páginas usando el menú superior
+1. Abrir PowerShell en la raíz del proyecto `CrediSmart`.
+2. Ir a la carpeta de la aplicación React e instalar dependencias:
 
-## Capturas de Pantalla
+```powershell
+cd "react-app"
+npm install
+```
 
-### 1. Página de Inicio (Catálogo)
-![Catálogo de créditos](IMG/captura-index.png)
+3. Levantar el servidor de desarrollo:
 
-### 2. Simulador
-![Simulador de créditos](IMG/captura-simulador.png)
+```powershell
+npm run dev
+# Abrir la URL indicada por Vite (por defecto http://localhost:5173)
+```
 
-### 3. Solicitar Crédito
-![Formulario de solicitud](IMG/captura-solicitar.png)
+4. Para construir producción:
+
+```powershell
+npm run build
+npm run preview
+```
 
 
 
