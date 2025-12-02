@@ -65,7 +65,5 @@ git push origin main
 ## Notas
 
 - Asegúrate de ejecutar `npm install` dentro de `react-app` antes de `npm run dev`.
-- Si quieres que prepare los commits por etapas (sólo preparar los comandos), dímelo y los dejo listos.
 
 ---
-Crédito: Hansel Raul Zambrano Lizarazo
