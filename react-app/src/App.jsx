@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react'
 import credits from './data/credits'
 import CreditCard from './components/CreditCard'
+import RequestForm from './components/RequestForm'
 
 function parseAmount(str){
   if(!str) return 0
@@ -18,6 +19,8 @@ export default function App(){
   const [query, setQuery] = useState('')
   const [amountRange, setAmountRange] = useState('all')
   const [sortOrder, setSortOrder] = useState('none') // 'asc' or 'desc' or 'none'
+  const [view, setView] = useState('catalog') // 'catalog' | 'form'
+  const [submissions, setSubmissions] = useState([])
 
   const ranges = {
     all: { label: 'Todos los rangos' },
@@ -62,47 +65,70 @@ export default function App(){
       <header className="app-header">
         <div className="brand">
           <img src="/IMG/tarjeta-de-visita.png" alt="CrediSmart logo" />
-          <h1>CrediSmart - Catálogo</h1>
+          <h1>CrediSmart</h1>
         </div>
+        <nav className="top-nav">
+          <button className={`nav-btn ${view==='catalog'?'active':''}`} onClick={()=>setView('catalog')}>Catálogo</button>
+          <button className={`nav-btn ${view==='form'?'active':''}`} onClick={()=>setView('form')}>Solicitar Crédito</button>
+        </nav>
       </header>
 
       <main className="container">
-        <section className="credits-section">
-          <h2>Productos Crediticios</h2>
+        {view === 'catalog' && (
+          <section className="credits-section">
+            <h2>Productos Crediticios</h2>
 
-          <div className="simulator-controls">
-            <input
-              className="search-input"
-              type="search"
-              placeholder="Buscar por nombre de producto..."
-              value={query}
-              onChange={e=>setQuery(e.target.value)}
-              aria-label="Buscar créditos"
-            />
+            <div className="simulator-controls">
+              <input
+                className="search-input"
+                type="search"
+                placeholder="Buscar por nombre de producto..."
+                value={query}
+                onChange={e=>setQuery(e.target.value)}
+                aria-label="Buscar créditos"
+              />
 
-            <select className="filter-select" value={amountRange} onChange={e=>setAmountRange(e.target.value)}>
-              {Object.entries(ranges).map(([key,{label}])=> (
-                <option key={key} value={key}>{label}</option>
+              <select className="filter-select" value={amountRange} onChange={e=>setAmountRange(e.target.value)}>
+                {Object.entries(ranges).map(([key,{label}])=> (
+                  <option key={key} value={key}>{label}</option>
+                ))}
+              </select>
+
+              <select className="filter-select" value={sortOrder} onChange={e=>setSortOrder(e.target.value)}>
+                <option value="none">Orden: predeterminado</option>
+                <option value="asc">Tasa: menor a mayor</option>
+                <option value="desc">Tasa: mayor a menor</option>
+              </select>
+            </div>
+
+            <div className="credits-grid">
+              {filtered.length === 0 && (
+                <p className="no-results">No hay créditos disponibles según los criterios.</p>
+              )}
+
+              {filtered.map((c) => (
+                <CreditCard key={c.id} data={c} />
               ))}
-            </select>
+            </div>
+          </section>
+        )}
 
-            <select className="filter-select" value={sortOrder} onChange={e=>setSortOrder(e.target.value)}>
-              <option value="none">Orden: predeterminado</option>
-              <option value="asc">Tasa: menor a mayor</option>
-              <option value="desc">Tasa: mayor a menor</option>
-            </select>
-          </div>
-
-          <div className="credits-grid">
-            {filtered.length === 0 && (
-              <p className="no-results">No hay créditos disponibles según los criterios.</p>
-            )}
-
-            {filtered.map((c) => (
-              <CreditCard key={c.id} data={c} />
-            ))}
-          </div>
-        </section>
+        {view === 'form' && (
+          <section className="form-section">
+            <h2>Solicitar Crédito</h2>
+            <RequestForm credits={credits} onSubmit={(s)=>{
+              setSubmissions(prev=>[s,...prev])
+            }} />
+            <div className="submissions-list">
+              {submissions.length>0 && <>
+                <h3>Solicitudes recientes (memoria)</h3>
+                <ul>
+                  {submissions.map((s,idx)=>(<li key={idx}>{s.product} — ${s.amount} — ${s.monthlyPayment?.toFixed(0)}</li>))}
+                </ul>
+              </>}
+            </div>
+          </section>
+        )}
       </main>
 
       <footer className="app-footer">
