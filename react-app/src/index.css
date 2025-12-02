@@ -1,0 +1,29 @@
+:root{
+  --bg:#f7f8f9;
+  --card:#fff;
+  --accent:#0b7a4a;
+  --muted:#666;
+}
+
+*{box-sizing:border-box}
+body{font-family:Inter, system-ui, Arial, sans-serif;margin:0;background:var(--bg);color:#222}
+.app-header{background:rgba(8,98,26,0.96);color:#fff;padding:1rem}
+.brand{display:flex;align-items:center;gap:0.75rem}
+.brand img{width:40px;height:40px;object-fit:contain}
+.container{max-width:1100px;margin:1.2rem auto;padding:0 1rem}
+.credits-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;margin-top:1rem}
+.credit-card{background:var(--card);padding:1rem;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+.card-header{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.6rem}
+.icon{font-size:1.4rem}
+.card-desc{color:var(--muted);font-size:0.95rem}
+.detalle-item{display:flex;justify-content:space-between;gap:0.5rem;font-size:0.95rem;margin-top:0.45rem}
+.detalle-item.requisitos{flex-direction:column;border-top:1px solid #f3f3f3;padding-top:0.5rem;margin-top:0.5rem}
+.rate{color:var(--accent);font-weight:600}
+.card-actions{display:flex;justify-content:flex-end;margin-top:0.8rem}
+.btn{padding:0.45rem 0.9rem;border-radius:6px;border:1px solid transparent;background:#eee}
+.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+@media (max-width:600px){
+  .credits-grid{grid-template-columns:1fr}
+  .brand h1{font-size:1rem}
+}
