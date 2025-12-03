@@ -53,16 +53,11 @@ npm run build
 npm run preview
 ```
 
-## Notas para entrega (rúbrica)
+## Notas
 
 - `src/` contiene los archivos fuente de la app React (`components/`, `pages/`, `data/`).
 - `react-app/package.json` incluye las dependencias necesarias (`react`, `react-dom`, `react-router-dom`, `vite`).
-- Asegúrate de que `.gitignore` excluya `node_modules/` antes de subir.
-- Capturas/GIF: por indicación del autor no se añadieron capturas; si el profesor las solicita, se pueden agregar en `IMG/` y referenciarlas aquí.
 
-## Commits y buenas prácticas
-
-Debes tener un historial de commits descriptivos durante el desarrollo (mínimo 8 commits). Ejemplos de buenos commits:
 
 - `chore: inicializar proyecto React con Vite`
 - `feat: crear componente CreditCard con props`
@@ -73,19 +68,6 @@ Debes tener un historial de commits descriptivos durante el desarrollo (mínimo 
 - `style: ajustes responsive`
 - `docs: agregar README con instrucciones`
 
-Verificar número de commits localmente:
-
-```powershell
-# Cuenta total de commits
-git rev-list --count HEAD
-
-# Ver últimos commits
-git log --oneline -n 12
-```
-
-## Último push (comandos mínimos)
-
-Si solo quieres agregar el `README.md` final y subirlo (último commit), usa estos comandos desde la raíz del repo `CrediSmart`:
 
 ```powershell
 # Traer cambios remotos y rebase para evitar conflictos
@@ -99,9 +81,6 @@ git commit -m "docs: actualizar README para rúbrica (instrucciones, tecnología
 # Enviar al remoto
 git push origin main
 ```
-
-Si prefieres agrupar todo en un único commit final (más simple):
-
 ```powershell
 git add .
 git commit -m "chore(react): commit final - README y ajustes finales"
@@ -118,8 +97,3 @@ git pull --rebase origin main
 git push origin main
 ```
 
-- Asegúrate de no subir `node_modules/`. Si no tienes `.gitignore`, créalo y añade `node_modules/`.
-
----
-
-Hansel Raul Zambrano Lizarazo
