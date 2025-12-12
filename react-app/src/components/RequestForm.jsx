@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { db } from '../firebase/firebase'
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
 
 export default function RequestForm({ credits = [], onSubmit }){
   const defaultValues = {
@@ -65,7 +67,6 @@ export default function RequestForm({ credits = [], onSubmit }){
   function handleSubmit(e){
     e.preventDefault()
     if(!validateAll()) return
-
     const product = credits.find(c=>c.id === values.product)
     const submission = {
       timestamp: new Date().toISOString(),
@@ -83,13 +84,29 @@ export default function RequestForm({ credits = [], onSubmit }){
       monthlyPayment: monthly
     }
 
-    if(typeof onSubmit === 'function') onSubmit(submission)
-    setSuccess('Solicitud enviada con éxito')
-    // clear form
-    setValues(defaultValues)
-    setErrors({})
-    // hide success after 3s
-    setTimeout(()=>setSuccess(''),3000)
+    const saveToFirestore = async () => {
+      try{
+        if(db){
+          await addDoc(collection(db,'requests'), { ...submission, createdAt: serverTimestamp() })
+          setSuccess('Solicitud enviada con éxito')
+          setValues(defaultValues)
+          setErrors({})
+          setTimeout(()=>setSuccess(''),3000)
+          return
+        }
+      }catch(err){
+        console.error('Error saving request to Firestore', err)
+        setErrors(prev=>({ ...prev, submit: 'No se pudo enviar la solicitud al servidor.' }))
+      }
+      // fallback: call onSubmit prop (in-memory)
+      if(typeof onSubmit === 'function') onSubmit(submission)
+      setSuccess('Solicitud registrada localmente')
+      setValues(defaultValues)
+      setErrors({})
+      setTimeout(()=>setSuccess(''),3000)
+    }
+
+    saveToFirestore()
   }
 
   const fmt = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 })
